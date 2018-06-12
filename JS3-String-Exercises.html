@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> String Exercises </title>
+</head>
+<body>
+  <script>
+  // Exercise 3
+  console.log('Exercise 3');
+  string_to_array = function (str) {
+	     return str.trim().split(" ");
+	};
+	console.log(string_to_array("Robin Singh"));
+
+  // Exercise 5
+  console.log('Exercise 5');
+
+  abbrev_name = function (str1) {
+    var split_names = str1.trim().split(" ");
+    if (split_names.length > 1) {
+        return (split_names[0] + " " + split_names[1].charAt(0) + ".");
+    }
+    return split_names[0];
+};
+console.log(abbrev_name("Robin Singh"));
+
+  // Exercise 6
+  console.log('Exercise 6');
+  protect_email = function (user_email) {
+    var avg, splitted, part1, part2;
+    splitted = user_email.split("@");
+    part1 = splitted[0];
+    avg = part1.length / 2;
+    part1 = part1.substring(0, (part1.length - avg));
+    part2 = splitted[1];
+    return part1 + "...@" + part2;
+};
+
+console.log(protect_email("robin_singh@example.com")); 
+   
+  
+  // Exercise 7
+  console.log('Exercise 7');
+  string_parameterize = function (str1) {
+    return str1.trim().toLowerCase().replace(/[^a-zA-Z0-9 -]/, "").replace(/\s/g, "-");
+};
+console.log(string_parameterize("Robin Singh from USA."));
+
+  // Exercise 10
+  console.log('Exercise 10');
+  swapcase = function swapcase(str) {
+        return str.replace(/([a-z]+)|([A-Z]+)/g, function(match, chr) {
+            return chr ? match.toUpperCase() : match.toLowerCase();
+        });
+    }
+console.log(swapcase('AaBbc'));
+
+  // Exercise 12
+  console.log('Exercise 12');
+  function uncamelize(str, separator) {
+  // Assume default separator is a single space.
+  if(typeof(separator) == "undefined") {
+    separator = " ";
+  }
+  // Replace all capital letters by separator followed by lowercase one
+  var str = str.replace(/[A-Z]/g, function (letter) 
+  {
+    return separator + letter.toLowerCase();
+  });
+  // Remove first separator
+  return str.replace("/^" + separator + "/", '');
+}
+console.log(uncamelize('helloWorld'));
+console.log(uncamelize('helloWorld','-'));
+console.log(uncamelize('helloWorld','_'));
+
+  // Exercise 13
+  console.log('Exercise 13');
+  repeat = function repeat(str, count) {
+    if(typeof(count) == "undefined") {
+    count =1;
+  }
+  return count < 1 ? '' : new Array(count + 1).join(str);
+    }
+console.log(repeat('Ha!'));
+console.log(repeat('Ha!',2));
+console.log(repeat('Ha!',3));
+
+  // Exercise 15
+  console.log('Exercise 15');
+  
+  humanize_format = function humanize(num) {
+   if(typeof(num) == "undefined") return;
+  if(num % 100 >= 11 && num % 100 <= 13)
+        return num + "th";
+        
+        switch(num % 10) {
+            case 1: return num + "st";
+            case 2: return num + "nd";
+            case 3: return num + "rd";
+        }
+        return num + "th";
+    }
+console.log(humanize_format());  
+console.log(humanize_format(1));  
+console.log(humanize_format(8));  
+console.log(humanize_format(301));  
+console.log(humanize_format(402)); 
+
+  // Exercise 16
+  console.log('Exercise 16');
+  text_truncate = function(str, length, ending) {
+    if (length == null) {
+      length = 100;
+    }
+    if (ending == null) {
+      ending = '...';
+    }
+    if (str.length > length) {
+      return str.substring(0, length - ending.length) + ending;
+    } else {
+      return str;
+    }
+  };
+console.log(text_truncate('We are doing JS string exercises.'))
+console.log(text_truncate('We are doing JS string exercises.',19))
+console.log(text_truncate('We are doing JS string exercises.',15,'!!'))
+
+  // Exercise 18
+  console.log('Exercise 18');
+   function count(main_str, sub_str) 
+    {
+    main_str += '';
+    sub_str += '';
+
+    if (sub_str.length <= 0) 
+    {
+        return main_str.length + 1;
+    }
+
+       subStr = sub_str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+       return (main_str.match(new RegExp(subStr, 'gi')) || []).length;
+    }
+ 
+console.log(count("The quick brown fox jumps over the lazy dog", 'the'));
+console.log(count("The quick brown fox jumps over the lazy dog", 'fox',false));
+
+  // Exercise 19
+  console.log('Exercise 19');
+  function escape_HTML(html_str) {
+    'use strict';
+
+    return html_str.replace(/[&<>"]/g, function (tag) {
+		var chars_to_replace = {
+            '&': '&',
+            '<': '<',
+            '>': '>',
+            '"': '"'
+        };
+
+		return chars_to_replace[tag] || tag;
+	});
+}
+
+console.log(escape_HTML(''));
+
+  // Exercise 23
+  console.log('Exercise 23');
+  function strip(str) {
+    return str.replace(/^\s+|\s+$/g, '');
+}
+
+console.log(strip('w3resource '));
+console.log(strip(' w3resource'));
+console.log(strip(' w3resource  '));
+
+  // Exercise 27
+  console.log('Exercise 27');
+  function ascii_to_hexa(str)
+  {
+	var arr1 = [];
+	for (var n = 0, l = str.length; n < l; n ++) 
+     {
+		var hex = Number(str.charCodeAt(n)).toString(16);
+		arr1.push(hex);
+	 }
+	return arr1.join('');
+   }
+
+console.log(ascii_to_hexa('12'));
+console.log(ascii_to_hexa('100'));
+
+  // Exercise 31
+  console.log('Exercise 31');
+  function escape_html(str) {
+  
+ if ((str===null) || (str===''))
+       return false;
+ else
+   str = str.toString();
+  
+  var map = {
+    '&': '&amp;',
+	'<': '&lt;',
+	'>': '&gt;',
+	'"': '&quot;',
+	"'": '&#039;'
+  };
+
+  return str.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+console.log(escape_html('PHP & MySQL'));
+console.log(escape_html('3 > 2'));
+
+  // Exercise 33
+  console.log('Exercise 33');
+   
+   function remove_non_word (str) {
+    if ((str===null) || (str===''))
+       return false;
+ else
+   str = str.toString();
+  
+var PATTERN = /[^\x20\x2D0-9A-Z\x5Fa-z\xC0-\xD6\xD8-\xF6\xF8-\xFF]/g;
+  
+  return str.replace(PATTERN, '');
+}
+console.log(remove_non_word('PHP ~!@#$%^&*()+`-={}[]|\\:";\'/?><., MySQL'));
+
+  // Exercise 35
+  console.log('Exercise 35');
+  function strip_html_tags(str)
+{
+   if ((str===null) || (str===''))
+       return false;
+  else
+   str = str.toString();
+  return str.replace(/<[^>]*>/g, '');
+}
+
+console.log(strip_html_tags('PHP Exercises'));
+
+  // Exercise 36
+  console.log('Exercise 36');
+
+   function zeroFill(number, width, osign) {
+    var num = '' + Math.abs(number),
+        zerosw = width - num.length,
+        sign = number >= 0;
+    return (sign ? (osign ? '+' : '') : '-') +
+        Math.pow(10, Math.max(0, zerosw)).toString().substr(1) + num;
+}
+
+console.log(zeroFill(120, 5, '-'));
+
+console.log(zeroFill(29, 4));
+
+  // Exercise 38
+  console.log('Exercise 38');
+
+  function case_insensitive_search(str, search_str)
+  {
+    var result= str.search(new RegExp(search_str, "i"));
+  
+    if (result>0)
+    return 'Matched';
+    else
+    return 'Not Matched';  
+   }
+
+console.log(case_insensitive_search('JavaScript Exercises', 'exercises'));
+
+console.log(case_insensitive_search('JavaScript Exercises', 'Exercises'));
+
+console.log(case_insensitive_search('JavaScript Exercises', 'Exercisess'));
+
+  // Exercise 48
+  console.log('Exercise 48');
+
+  function successor(str) {
+        var alphabet = 'abcdefghijklmnopqrstuvwxyz',
+            length = alphabet.length,
+            result = str,
+            i = str.length;
+
+        while(i >= 0) {
+            var last = str.charAt(--i),
+                next = '',
+                carry = false;
+
+            if (isNaN(last)) {
+                index = alphabet.indexOf(last.toLowerCase());
+
+                if (index === -1) {
+                    next = last;
+                    carry = true;
+                }
+                else {
+                    var isUpperCase = last === last.toUpperCase();
+                    next = alphabet.charAt((index + 1) % length);
+                    if (isUpperCase) {
+                        next = next.toUpperCase();
+                    }
+
+                    carry = index + 1 >= length;
+                    if (carry && i === 0) {
+                        var added = isUpperCase ? 'A' : 'a';
+                        result = added + next + result.slice(1);
+                        break;
+                    }
+                }
+            }
+            else {
+                next = +last + 1;
+                if(next > 9) {
+                    next = 0;
+                    carry = true;
+                }
+
+                if (carry && i === 0) {
+                    result = '1' + next + result.slice(1);
+                    break;
+                }
+            }
+
+            result = result.slice(0, i) + next + result.slice(i + 1);
+            if (!carry) {
+                break;
+            }
+        }
+        return result;
+    }
+
+console.log(successor('abcd'));
+console.log(successor('3456'));
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> 16 Exercises </title>
+</head>
+<body>
+<script>
+	
+//Exercise 1
+
+console.log("Exercise 1");
+    var today = new Date();
+    var dd = today.getDate();
+
+    var mm = today.getMonth()+1; 
+    var yyyy = today.getFullYear();
+    if(dd<10) 
+    {
+        dd='0'+dd;
+    }
+
+    if(mm<10) 
+    {
+        mm='0'+mm;
+    } 
+    today = dd+'/'+mm+'/'+yyyy+" "+today.getHours()+" hrs "+today.getMinutes()+" mins "+today.getSeconds()+" secs ";
+    console.log(today);
+
+
+//Exercise2
+console.log('\nExercise2');
+
+var numArray = [23, 12, 19, -4, 7.5];
+max = numArray[0];
+for( var i = 1; i < numArray.length; i++)
+{
+     if( max < numArray[i] )
+      max = numArray[i];
+}
+
+console.log('The largest of 5 numbers = '+max);
+
+//Exercise3
+console.log('\nExercise3');
+ 
+var num = prompt('Enter number','678');
+    	var str = num.toString();
+    	var result = [str[0]];
+
+    	for(var x=1; x<str.length; x++)
+		{
+		    if((str[x-1]%2 === 0)&&(str[x]%2 === 0))
+		     {
+		      result.push('-', str[x]);
+		     }
+		    else
+		     {
+		      result.push(str[x]);
+		     }
+		}
+		console.log(result.join(''));
+
+//Exercise4
+console.log('\nExercise4');	
+
+var strArray = ['bdbja','zxvhxe','azvhdc','iuegc','cncee'];
+
+for( var i = strArray.length; i > 0; i--)
+{
+	for ( var j = 0; j < i; j++)
+	{
+		if ( strArray[j] > strArray[j+1] )
+		{
+            temp = strArray[j];
+            strArray[j] = strArray[j+1];
+            strArray[j+1] = temp;
+		}
+	}
+}	 
+
+console.log(strArray);
+
+//Exercise5
+console.log('\nExercise5');
+
+var dupArray = [2, 2, 3, 'abc', 'b', 4, 'a', 5, 5, 6, 'a', 7, 'b'];
+
+        function removeDup (arr) {
+         
+            var result = [], flag;
+
+            result.push(arr[0]);
+
+            for( var i = 1; i < arr.length; i++)
+            {
+            	flag = 0;
+            	for( var j = 0; j < result.length; j++)
+            	{
+            		if( arr[i] == result[j])
+            	    {
+            	      	flag = 1; break;
+            	    }
+                }
+               if(flag == 0)
+               	result.push(arr[i]);
+            }
+            console.log('Original array = '+arr);
+            console.log('After removing duplicates = '+result);
+        }
+        removeDup(dupArray);
+
+//Exercise6
+console.log('\nExercise6');
+
+var arr1 = [2, 4, 7, 0, 13, 3];
+var arr2 = [4, 5, 6, 7, 1, 2];
+
+for ( var i = 0; i < arr1.length; i++)
+{
+	arr1[i] = arr1[i] - arr2[i]; 
+}
+console.log(arr1);
+
+     
+//Exercise7
+console.log('\nExercise7');
+
+var library = [
+{ author: 'Bill Gates', title: 'The Road Ahead', libraryID: 1254},
+{ author: 'Steve Jobs', title: 'Walter Isaacson', libraryID: 4264},
+{ author: 'Suzanne Collins', title: 'Mockingjay: The Final Book of The Hunger Games', libraryID: 3245}
+];
+
+library.sort( function(a,b) { 
+   var val1 = a.title;
+   var val2 = b.title;
+
+   if ( a >= b)
+   	 return 1;
+   	else if ( a < b)
+   	 return -1;
+   	else
+     return 0;
+});  
+
+console.log(library);
+
+//Exercise8
+console.log('\nExercise8');
+
+    function is_email(str)
+    {
+      regexp = /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$/i;
+      
+            if (regexp.test(str))
+            {
+              return true;
+            }
+            else
+            {
+              return false;
+            }
+    }
+    console.log(is_email("vrihanji@gmail.com"));
+    console.log(is_email("mysite@.org.org "));
+
+
+	//Exercise 9
+	console.log("\nExercise 9");
+
+	var student = {
+	'name' : 'Vikram',
+	'sclass' : "javascript class" ,
+	'rollno' : 330
+	}
+
+	console.log('Name :'+student.name);
+	console.log('CLass :'+student.sclass)
+	console.log('Rollno :'+student.rollno)
+
+	// Exercise 10
+	console.log("\nExercise 10");
+
+	var student = [
+	{
+		name: 'David',
+		marks: 80,
+		alreadyRead: true
+	},
+	{   
+		name: 'Vinoth',
+		marks: 77,
+		alreadyRead: false
+	},
+	{
+		name: 'Divya',
+		marks: 88,
+		alreadyRead: false
+	},
+	{   
+		name: 'Ishitha',
+		marks: 95,
+		alreadyRead: false
+	},
+	{
+		name: 'Thomas',
+		marks: 68,
+		alreadyRead: false
+	}];
+	var sum = 0;
+	for (var i = 0;	i< student.length;i++)
+	{
+		sum +=student[i].marks; 
+	}
+	var avg = sum/student.length; 
+	console.log(avg);
+
+//Exercise11
+console.log('\nExercise11');
+
+function alphabet_order(str)
+  {
+return str.split('').sort().join('');
+  }
+console.log(alphabet_order("webmaster"));
+
+//Exercise12
+console.log('\nExercise12');
+
+function char_count(str, letter) 
+{
+ var letter_Count = 0;
+ for (var position = 0; position < str.length; position++) 
+ {
+    if (str.charAt(position) == letter) 
+      {
+      letter_Count += 1;
+      }
+  }
+  return letter_Count;
+}
+
+console.log('Occurences = '+char_count('gmail.com', 'm'));
+
+//Exercise13
+console.log('\nExercise13');
+
+var flatten = function(a, shallow,r){
+  if(!r){ r = []}
+   
+if (shallow) {
+  return r.concat.apply(r,a);
+  }
+      
+   for(var i=0; i<a.length; i++){
+        if(a[i].constructor == Array){
+            flatten(a[i],shallow,r);
+        }else{
+            r.push(a[i]);
+        }
+    }
+    return r;
+}
+
+console.log(flatten([5, [22], [[14]], [[4]],[5,6]]));
+
+//Exercise14
+console.log('\nExercise14');
+
+	console.log("Part 1")
+
+	var myObj =
+	[{'name':'Saurabh', 'age': 30, 'occupation': "Team Leader"},
+	{'name':'Anupriya', 'age': 32, 'occupation': "Team Leader"},
+	{'name':'Kalyani', 'age': 25, 'occupation': "Programmer"},
+	{'name':'Damodaran', 'age': 27, 'occupation': "Programmer"},
+	{'name':'Krishnakath', 'age': 22, 'occupation': "Programmer"},
+	{'name':'Venketraman', 'age': 28, 'occupation': "Programmer"}];
+
+	for (var i = myObj.length - 1; i >= 0; i--) {
+		if(myObj[i].occupation == 'Programmer')
+		{
+			console.log(myObj[i]);
+		}
+	}
+	
+	console.log('Part 2');
+    myObj.sort((a, b) => parseFloat(a.age) - parseFloat(b.age));
+    console.log(myObj);
+
+	console.log('Part 3');
+    console.log(myObj.reduce(function(m,v){m[v.key] = v.value; return m;}, {}));
+
+  	console.log('Part 4');
+    function selectName (item) {
+	   	return item.name;
+	   }
+	 var res = myObj.map(selectName);
+     console.log([res]);
+
+
+    
+//Exercise15
+console.log('\nExercise15');
+
+var jsonStr = '{"mike":"Book","jason":"sweater","chels":"iPad"}';             
+var obj = JSON.parse(jsonStr);
+console.log(obj);
+
+
+//Exercise16
+console.log('\nExercise16');
+
+var obj = {
+"One":"1",
+"Two":"2",
+"Three":"3",
+"Four":"4"
+}
+
+var result = Object.keys(obj).map(function(key) {
+  return obj[key];
+});
+
+console.log(result);
+
+
+
+</script>
+</body>
+</html>

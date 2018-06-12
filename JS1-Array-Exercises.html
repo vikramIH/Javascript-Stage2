@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> JS1-Stage2-42Exercises </title>
+</head>
+<body>
+    <script>
+    	
+    	//Exercise 1
+    	console.log('Exercise 1');
+
+    	function is_array(arr) {
+             return (toString.call(arr) === "[object Array]");
+       	}
+
+    	console.log(is_array('w3resource'));
+    	console.log(is_array([1,2,4,0]));
+
+    	//Exercise2
+    	console.log('\nExercise 2');
+
+        function array_clone (arr) {
+        	return arr.slice(0);
+        }
+
+        console.log(array_clone([1,2,4,0]));
+    	console.log(array_clone([1,2,[4,0]]));
+       
+
+        //Exercise3
+    	console.log('\nExercise 3');
+
+    	function first(arr, n) {
+             if ( arr == null )
+             	return [];
+             if ( n == null )
+             	return arr[0];
+             if ( n < 0)
+             	return [];
+
+             return arr.slice(0,n);
+    	}
+ 
+        console.log(first([7, 9, 0, -2]));
+		console.log(first([],3));
+		console.log(first([7, 9, 0, -2],3));
+		console.log(first([7, 9, 0, -2],6));
+		console.log(first([7, 9, 0, -2],-3));
+
+        //Exercise4
+    	console.log('\nExercise 4');
+
+    	function last (arr, n) {
+		  if (arr == null) 
+		    return void 0;
+		  if (n == null) 
+		     return arr[arr.length - 1];
+		  return arr.slice(Math.max(arr.length - n, 0));  
+		  };
+
+		console.log(last([7, 9, 0, -2]));
+		console.log(last([7, 9, 0, -2],3));
+		console.log(last([7, 9, 0, -2],6));
+
+        //Exercise5
+    	console.log('\nExercise 5');
+  
+        myColor = ["Red", "Green", "White", "Black"];
+		console.log(myColor.toString());
+		console.log(myColor.join(''));
+		console.log(myColor.join('+'));
+ 
+        //Exercise6
+    	console.log('\nExercise 6');
+
+    	var num = prompt('Enter number','678');
+    	var str = num.toString();
+    	var result = [str[0]];
+
+    	for(var x=1; x<str.length; x++)
+		{
+		    if((str[x-1]%2 === 0)&&(str[x]%2 === 0))
+		     {
+		      result.push('-', str[x]);
+		     }
+		    else
+		     {
+		      result.push(str[x]);
+		     }
+		}
+		console.log(result.join(''));
+		         
+        //Exercise7
+    	console.log('\nExercise 7');
+        
+        var arr = [3,8,7,6,5,-4,-3,2,1];
+
+        for(var i = arr.length; i > 0 ; i--)
+        {
+           for( var j = 0; j < i; j++)
+           {
+           	   if( arr[j] > arr[j+1])
+           	   {
+           	   	temp = arr[j];
+           	   	arr[j] = arr[j+1];
+           	   	arr[j+1] = temp;
+           	   }
+           }
+        }
+
+        console.log(arr.join(','));
+
+        //Exercise8
+    	console.log('\nExercise 8');
+
+    	var arr1 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]; 
+        var maxItem, max = 0;
+        var mf = 1;
+      
+        for ( var i = 0; i < arr1.length; i++)
+        {
+            for( var j = i; j<arr1.length; j++)
+            {	
+            	if (arr1[i] == arr1[j])
+            	max++;
+	            if(mf < max)
+	            {
+	            	mf = max;
+	            	maxItem = arr1[i];
+	            }
+	        } 
+	      max = 0;
+        }
+       
+
+        console.log(maxItem + ' (' + mf + ' times)') ;
+
+        //Exercise9
+    	console.log('\nExercise 9');
+         
+        str = 'The Quick Brown Fox';
+		var UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		var LOWER = 'abcdefghijklmnopqrstuvwxyz';
+		var result = [];
+		  
+		  for(var x=0; x<str.length; x++)
+		  {
+		    if(UPPER.indexOf(str[x]) !== -1)
+		    {
+		      result.push(str[x].toLowerCase());
+		    }
+		    else if(LOWER.indexOf(str[x]) !== -1)
+		    {
+		      result.push(str[x].toUpperCase());
+		    }
+		    else 
+		    {
+		      result.push(str[x]);
+		    }
+		  }
+		console.log(result.join(''));      
+
+        //Exercise10
+    	console.log('\nExercise 10');
+        
+        var a = [[1, 2, 1, 24], [8, 11, 9, 4], [7, 0, 7, 27], [7, 4, 28, 14], [3, 10, 26, 7]];
+
+	       for (var i in a)
+	       {
+		       	console.log('row ' + i);
+		       	for( var j in a[i])
+		       	{
+		       		console.log(a[i][j]);
+		       	}
+	       }   
+
+         //Exercise11
+    	console.log('\nExercise 11');
+
+         var numArray = [0,1,2,3,4];
+
+         function sumOfSquares(arr) {
+             var sum = 0;
+
+          for ( var i = 0; i < arr.length; i++)
+          {
+          	sum += Math.pow(arr[i],2);
+          }
+          console.log('Sum of squares = '+sum);
+         }
+
+         sumOfSquares(numArray);
+
+         //Exercise12
+    	console.log('\nExercise 12');
+
+    	var numList = [1, 2, 3, 4, 5];
+
+    	function sumAndProduct (arr) {
+             
+             var sum = 0, prod = 1;
+
+            for( var i in arr)
+            {
+            	sum += arr[i];
+            	prod *= arr[i];
+            }
+
+            console.log('Sum = '+ sum);
+            console.log('Product = '+prod);
+    	}
+
+    	sumAndProduct(numList);
+
+    	//Exercise13
+    	console.log('\nExercise 13');
+    	var x = 0;
+var array = Array();
+
+function add_element_to_array()
+{
+ array[x] = document.getElementById("text1").value;
+ alert("Element: " + array[x] + " Added at index " + x);
+ x++;
+ document.getElementById("text1").value = "";
+}
+
+function display_array()
+{
+   var e = "<hr/>";   
+    
+   for (var y=0; y<array.length; y++)
+   {
+     e += "Element " + y + " = " + array[y] + "<br/>";
+   }
+   document.getElementById("Result").innerHTML = e;
+}
+
+    	//Exercise14
+    	console.log('\nExercise 14');
+
+        var dupArray = [2, 2, 3, 'abc', 'b', 4, 'a', 5, 5, 6, 'a', 7, 'b'];
+
+        function removeDup (arr) {
+         
+            var result = [], flag;
+
+            result.push(arr[0]);
+
+            for( var i = 1; i < arr.length; i++)
+            {
+            	flag = 0;
+            	for( var j = 0; j < result.length; j++)
+            	{
+            		if( arr[i] == result[j])
+            	    {
+            	      	flag = 1; break;
+            	    }
+                }
+               if(flag == 0)
+               	result.push(arr[i]);
+            }
+            console.log('Original array = '+arr);
+            console.log('After removing duplicates = '+result);
+        }
+        removeDup(dupArray);
+
+        //Exercise15
+    	console.log('\nExercise 15');
+        
+        var color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
+        var o = ["st","nd","rd","th"];
+        var ind;
+
+        for ( var i = 1; i < color.length + 1; i++ )
+        { 
+        	 if( i > 3)
+        	 	ind = o[3];
+        	 else
+        	 	ind = o[i-1];
+
+            console.log(i + ind + ' choice is '+ color[i-1]);
+        }
+
+        //Exercise16
+    	console.log('\nExercise 16');
+        
+       var years = [1996, 2000, 2004, 2010, 2012, 2018];
+       var result = [];
+
+       for ( var i = 0; i < years.length; i++ )
+       {   
+       	   var year = years[i];
+       	   if ( year%400 == 0)
+             result.push(year);
+         else if ( year % 100 ==0 )
+         	continue;
+         else if ( year % 4 == 0)
+         	result.push(year);
+         else
+         	continue;
+       }
+
+       console.log('Original list : '+ years);
+       console.log('Leap years : '+ result);
+
+       //Exercise17
+    	console.log('\nExercise 17');
+
+    	var arr = [1,2,3,4,5,6,7,8];
+        var temp, randomIndex, OriginalArr = arr;
+
+        console.log('Original array = '+ OriginalArr);
+
+        for ( var i = arr.length; i > 0; i--)
+        {
+             randomIndex = Math.floor(Math.random()*i);
+
+             temp = arr[randomIndex];
+             arr[randomIndex] = arr[i-1];
+             arr[i-1] = temp;
+        }       
+
+        
+        console.log('Shuffled array ='+ arr);
+
+        //Exercise18
+    	console.log('\nExercise 18');
+
+    	var items = [9, 12, 16, 22, 45, 68, 70, 84, 93];
+        var len = items.length, first = 0, i = 0;
+        var last = len - 1, mid = (first+last)/2;
+       
+        binarySearch(items, 22);
+
+        function binarySearch(arr, ele) {
+
+	         while( ele != arr[mid] && first < last)	
+	         {  
+	         	if( ele <= arr[mid] )
+	        	{
+	                  last = mid-1;
+	                  mid = (first + last) / 2;
+	        	}
+	        	else
+	        	{	
+	        		first = mid + 1;
+	        	    mid = (first + last) / 2;
+	            }
+	         }
+
+	         if( ele == arr[mid] )
+               console.log('Element found at '+ mid);
+           else
+               console.log('Element not found!'); 
+            
+        }
+
+      //Exercise19
+    	console.log('\nExercise 19');
+       
+        var array1 = [2, 3, 6, 1, 0,];
+        var array2 = [0, 2, 9, 7, 4, 1, 8, 9];
+        var len1 = array1.length, len2 = array2.length;
+        var sum = 0;
+
+        for(var i = 0; i < Math.max(len1,len2); i++)
+        {
+        	
+        	if( i >= (Math.min(len1,len2) - 1))
+                  ;
+        	else	
+              array2[i] += array1[i] ;
+        }
+      
+        console.log('Sum of arrays = [' + array2+ ']');
+
+        //Exercise20
+    	console.log('\nExercise 20');
+         
+        var fullArray = [4, 5, 6, 6, 4, 2, 9, 2, 3, 7, 4, 4];
+        var duplicate = []; 
+
+        for (var i = 0; i < fullArray.length; i++) {
+          for ( var j = i+1 ; j < fullArray.length; j++) {
+          	if ( fullArray[i] == fullArray[j] && (!duplicate.includes(fullArray[i])) )
+          	
+          		duplicate.push(fullArray[i]);
+          }
+        }
+
+        console.log(duplicate);
+
+        //Exercise21
+    	console.log('\nExercise 21');
+    	var flatten = function(a, shallow,r){
+  if(!r){ r = []}
+   
+if (shallow) {
+  return r.concat.apply(r,a);
+  }
+      
+   for(var i=0; i<a.length; i++){
+        if(a[i].constructor == Array){
+            flatten(a[i],shallow,r);
+        }else{
+            r.push(a[i]);
+        }
+    }
+    return r;
+}
+
+console.log(flatten([1, [2], [3, [[4]]],[5,6]]));
+
+console.log(flatten([1, [2], [3, [[4]]],[5,6]], true));
+
+
+    	//Exercise22
+    	console.log('\nExercise 22');
+        
+        var arra1 = [2,3,4,5,9,0];
+        var arra2 = [3,4,5,6,7,8];
+        var len1 = arra1.length, len2 = arra2.length;
+        var union = arra2, flag;
+
+        console.log('Array 1 : ' + arra1);
+        console.log('Array 2 : ' + arra2);
+ 
+        for ( var i = 0; i < len1; i++ )
+        {  
+           flag = 0;
+          for ( var j = 0; j < len2; j++)
+          {
+          	if ( arra1[i] == arra2[j] )
+             {
+             	flag = 1; break; 
+             }
+          }
+          if(!flag)
+          {
+             union.push(arra1[i]);
+          }
+        }
+
+        console.log('Union of two arrays : ' + union);
+
+        //Exercise23
+    	console.log('\nExercise 23');
+
+        var arra1 = [2,3,4,5,9,0];
+        var arra2 = [3,4,5,6,7,8];
+        var len1 = arra1.length, len2 = arra2.length;
+        var difference = [], flag;
+
+        console.log('Array 1 : ' + arra1);
+        console.log('Array 2 : ' + arra2);
+ 
+       for ( var i = 0; i < len1; i++)
+       {
+       	  if ( !arra2.includes(arra1[i]) )
+       	    difference.push(arra1[i]);
+       }
+
+       for ( var i = 0; i < len2; i++)
+       {
+       	  if ( !arra1.includes(arra2[i]) )
+       	    difference.push(arra2[i]);
+       }
+
+       console.log('Difference of two arrays : ' + difference);       
+ 
+       //Exercise24
+    	console.log('\nExercise 24');
+
+        var array3 = [NaN, 0, 15, false, -22, '',undefined, 47, null];
+        var result = [];
+        for ( var i = 0; i < array3.length; i++ )
+        {
+        	if(array3[i])
+             result.push(array3[i]);
+        }
+        console.log(result); 
+
+        //Exercise25
+    	console.log('\nExercise 25');
+ 
+        var library = [ 
+	    { author: 'Bill Gates', title: 'The Road Ahead', libraryID: 1254},
+	    { author: 'Steve Jobs', title: 'Walter Isaacson', libraryID: 4264},
+	    { author: 'Suzanne Collins', title: 'Mockingjay: The Final Book of The Hunger Games', libraryID: 3245}
+	    ];
+
+	    library.sort(compareSort);
+
+	    function compareSort (a,b) {
+          if( a.title < b.title)
+          	return -1;
+          else if( a.title > b.title)
+          	return 1;
+          else
+          	return 0;
+        }
+   	    console.log(library);
+
+   	    //Exercise26
+    	console.log('\nExercise 26');
+
+        var target = [23, 34, 12, 40, 15, 31, 19];
+        var flag = 0, loc1,loc2;
+        function findTarget (arr, sum) {
+          
+	          for ( var i = 0; i < arr.length; i++)
+	          {
+	          	for ( var j = i+1; j < arr.length; j++)
+	          	{
+	          		if( arr[i] + arr[j] == sum)
+	          	    {
+	          	    	loc1 = i;
+	          	    	loc2 = j; 
+	          	    	flag = 1;
+	          	    	break;
+	          	    }
+	          	}
+	          	if(flag) break;
+	          }   
+        }
+        findTarget(target,42);
+        console.log('Target found at '+ loc1 + ', '+ loc2 + '. Sum = ' + target[loc1]+'+'+target[loc2] + ' = 42' );
+
+
+         //Exercise27
+    	console.log('\nExercise 27');
+    	var library = [ 
+   { author: 'Bill Gates', title: 'The Road Ahead', libraryID: 1254},
+   { author: 'Steve Jobs', title: 'Walter Isaacson', libraryID: 4264},
+   { author: 'Suzanne Collins', title: 'Mockingjay: The Final Book of The Hunger Games', libraryID: 3245}
+   ];
+
+function property_value(array, property_key) {
+	var arr = [],
+		index = -1,
+		arrlen = array.length,array_items;
+
+	while (++index < arrlen) {
+		array_items = array[index];
+
+  if (array_items.hasOwnProperty(property_key)) 
+      {
+	 arr[arr.length] = array_items[property_key];
+      }
+	}
+
+	return arr;
+}
+
+console.log(property_value(library, 'title'));
+
+console.log(property_value(library, 'author'));
+
+
+     //Exercise28
+   	 console.log('\nExercise 28');
+
+     console.log(longest_common_starting_substring(['go', 'google']));
+     console.log(longest_common_starting_substring(['SQLInjection', 'SQLTutorial']));
+     console.log(longest_common_starting_substring(['abcd', '1234'])); 
+      function longest_common_starting_substring(arr) {
+     
+      var a1 = arr[0];
+      var a2 = arr[1];
+      var len = a1.length;
+
+      for ( var i = 0; i < len, a1.charAt(i) == a2.charAt(i); i++);
+	      
+      return a1.substring(0,i);
+     }
+
+     //Exercise29
+   	 console.log('\nExercise 29');
+   
+     function num_string_range(start, end, step) 
+  {
+    var range = [];
+    if ((step === 0) || (typeof start == "undefined" || typeof end ==    "undefined") || (typeof start != typeof end))
+     return false;
+  
+    if (end < start) {
+        step = -step;
+    }
+
+    if (typeof start == "number") {
+
+        while (step > 0 ? end >= start : end <= start) {
+            range.push(start);
+            start += step;
+        }
+        } 
+      else if (typeof start == "string") {
+
+        if (start.length != 1 || end.length != 1) {
+            throw TypeError("Strings with one character are supported.");
+        }
+
+        start = start.charCodeAt(0);
+        end = end.charCodeAt(0);
+
+        while (step > 0 ? end >= start : end <= start) {
+            range.push(String.fromCharCode(start));
+            start += step;
+        }
+
+    }
+   
+    else
+       {
+        throw TypeError("Only string and number are supported");
+        }
+
+    return range;
+
+}
+
+console.log(num_string_range('a', "z", 2));
+console.log(num_string_range("Z", "A", 2));
+console.log(num_string_range(0, -5, 1));
+console.log(num_string_range(0, 25, 5));
+console.log(num_string_range(20, 5, 5));
+
+     //Exercise30
+   	 console.log('\nExercise 30');
+
+   	 console.log('\nExercise 22');
+        
+        var arra1 = [2,3,4,5,9,0];
+        var arra2 = [3,4,5,6,7,8];
+        var len1 = arra1.length, len2 = arra2.length;
+        var union = arra2, flag;
+
+        console.log('Array 1 : ' + arra1);
+        console.log('Array 2 : ' + arra2);
+ 
+        for ( var i = 0; i < len1; i++ )
+        {  
+           flag = 0;
+          for ( var j = 0; j < len2; j++)
+          {
+          	if ( arra1[i] == arra2[j] )
+             {
+             	flag = 1; break; 
+             }
+          }
+          if(!flag)
+          {
+             union.push(arra1[i]);
+          }
+        }
+
+        console.log('Union of two arrays : ' + union);
+
+      //Exercise32
+   	  console.log('\nExercise 32');
+
+      function contains(arr, element) {
+		    for (var i = 0; i < arr.length; i++) {
+		        if (arr[i] === element) {
+		            return true;
+		        }
+		    }
+		    return false;
+		}
+		arr = [2, 5, 9, 6];
+		console.log(contains(arr, 5));  
+
+      //Exercise33
+   	  console.log('\nExercise 33');
+
+        arr = [1, 3, 6, 3, -5];
+		console.log(arr);
+		arr.length = 0;
+		console.log(arr);
+   
+     // Exrcise 35
+     console.log('\nExercise 35');
+
+     function random_item(items)
+		{
+		  
+		return items[Math.floor(Math.random()*items.length)];
+		     
+		}
+
+		var items = [254, 45, 212, 365, 2543];
+		console.log(random_item(items));
+
+	
+
+	// Exrcise 37
+     console.log('\nExercise 37');
+
+     function array_filled(n, val)
+{
+    return Array.apply(null, Array(n)).map(String.prototype.valueOf,val);
+}
+
+console.log(array_filled(3, 'default value'));
+console.log(array_filled(4, 'password'));
+
+     // Exrcise 40
+     console.log('\nExercise 40');
+    
+     function array_range(start, len) 
+     {
+		var arr = new Array(len);
+		for (var i = 0; i < len; i++, start++) 
+        {
+			arr[i] = start;
+		}
+      		return arr;
+}
+
+
+console.log(array_range(1, 4));
+
+console.log(array_range(-6, 4));
+    
+    // Exrcise 41
+     console.log('\nExercise 41');
+      function rangeBetwee(start, end) 
+{
+  
+		if (start > end) {
+			var arr = new Array(start - end + 1);
+			for (var i = 0; i < arr.length; i++, start--) {
+				resarrult[i] = start;
+			}
+			return arr;
+		} 
+       else 
+       {
+			var arro = new Array(end-start+1);
+         
+		for (var j = 0; j < arro.length; j++, start++) 
+        {
+			arro[j] = start;
+		}
+      		return arro;
+		}
+	}
+
+console.log(rangeBetwee(4, 7));
+console.log(rangeBetwee(-4, 7));   
+
+    // Exrcise 42
+     console.log('\nExercise 42');
+
+     function difference(arr1,arr2) {
+  
+  var a1= flatten(arr1,true);
+  var a2= flatten(arr2,true);
+  
+ var a=[], diff=[];
+  for(var i=0;i< a1.length;i++)
+    a[a1[i]]=false;
+  for(i=0;i< a2.length;i++)
+  if(a[a2[i]]===true) 
+     { delete a[a2[i]];}
+    else a[a2[i]]=true;
+  for(var k in a)
+    diff.push(k);
+  return diff;   
+  }
+
+var flatten = function(a, shallow,r){
+  if(!r){ r = [];}
+if (shallow) {
+  return r.concat.apply(r,a);
+  }  
+   for(i=0; i< a.length; i++){
+        if(a[i].constructor == Array){
+            flatten(a[i],shallow,r);
+        }else{
+            r.push(a[i]);
+        }
+    }
+    return r;
+};
+console.log(difference([1, 2, 3], [100, 2, 1, 10]));
+console.log(difference([1, 2, 3, 4, 5], [1, [2], [3, [[4]]],[5,6]]));
+console.log(difference([1, 2, 3], [100, 2, 1, 10]));
+
+     
+</script>
+
+<input type="text" id="text1"></input>
+<input type="button" id="button1" value="Add" onclick="add_element_to_array();"></input>
+<input type="button" id="button2" value="Display" onclick="display_array();"></input>
+<div id="Result"></div>
+</body>
+</html>
